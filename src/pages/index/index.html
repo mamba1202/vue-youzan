@@ -78,7 +78,7 @@
           v-infinite-scroll="getLists"
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="30"
-          >
+          > <!--true禁止/false允许-->
             <li v-for="list in lists" :key="list.id">
               <div class="goods-item">
                 <a href="https://h5.youzan.com/v2/showcase/goods?alias=2fwig6rnqfq6m&amp;source=yzapp&amp;f_platform=yzapp">
@@ -93,7 +93,7 @@
               </div>
             </li>
           </ul>
-          <div class="loading-more" v-show="loading"><span></span></div>
+          <div class="loading-more" v-show="loading"><span></span></div>    <!--true/false-->
         </div>
         <div class="js-show-find category-guid" style="display: none;"></div>
       </div>

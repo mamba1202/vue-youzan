@@ -9,7 +9,7 @@ import { InfiniteScroll } from 'mint-ui'; //引入mint-ui
 Vue.use(InfiniteScroll);
 
 import Foot from 'components/Foot.vue'
-
+import Swipe from 'components/Swipe.vue'
 console.log(axios)
 
 
@@ -20,10 +20,12 @@ new Vue({
         pageNum: 1,
         pageSize: 6,
         loading: false,  //可以继续加载
-        allLoaded: false
+        allLoaded: false,
+        bannerLists: null
     },
     created(){
         this.getLists()
+        this.getBanner()
     },
     methods:{
         getLists(){
@@ -47,9 +49,15 @@ new Vue({
                this.loading = false  //请求完成，可进行下一次的请求
                this.pageNum++
             })
+        },
+        getBanner(){
+            axios.get(url.banner).then(res=>{
+                this.bannerLists = res.data.lists
+            })
         }
     },
     components:{
-        Foot: Foot //注入
+        Foot: Foot, //注入
+        Swipe: Swipe
     }
 })

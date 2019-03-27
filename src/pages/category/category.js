@@ -18,7 +18,7 @@ new Vue({
     },
     created(){
        this.getTopList()
-       this.getSubList(0,)
+       this.getSubList(0)
     },
     methods:{
         getTopList(){
@@ -39,7 +39,7 @@ new Vue({
            }).catch(err=>{
                console.log('err')
            })
-            }
+        }
       },
       getRank(){
         axios.get(url.rank).then(res=>{
@@ -47,6 +47,11 @@ new Vue({
    }).catch(err=>{
        console.log('err')
    })
+},
+     toSearch(list){
+          //跳转到search页面 --keyWord分类名称
+          debugger
+          location.href = `search.html?keyword=${list.name}&id=${list.id}`
       }
     },
     components:{

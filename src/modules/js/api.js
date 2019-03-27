@@ -3,7 +3,8 @@ let url = {
     banner: '/index/banner'	,
     topList: '/category/topLists',
     rank: '/category/rank',
-    subList: '/category/subLists'
+    subList: '/category/subLists',
+    goodList:'/search/goodLists'
 
 }
 

@@ -19,56 +19,19 @@
   <link rel="stylesheet" href="./css/goods_theme.css">
   <link rel="stylesheet" href="./css/goods_mars.css">
   <link rel="stylesheet" href="./css/goods_sku.css"> -->
+  <style>
+  [v-cloak] { display: none } 
+  </style>
 </head>
 
-<body class=" body-fixed-bottom
-            default-theme">
-  <div id="app" v-if='details'>
+<body class=" body-fixed-bottom default-theme">
+  <div id="app" v-cloak>
+  <div v-if='details'>
     <div class="container wap-goods internal-purchase" style="min-height: 617px;">
       <div class="content no-sidebar">
         <div class="content-body">
-          <div class="custom-image-swiper custom-goods-swiper js-swp swp">
-            <div class="swiper-wrapper js-swp-wrap" style="height: 375px;" data-height="320">
-              <div class="swp-page"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(-9999px, 0px, 0px);">
-                <img class=""
-                  src="https://img.yzcdn.cn/upload_files/2017/07/12/FkSvYz8FLLD9-t0smXO43hF6ov7S.jpg?imageView2/2/w/980/h/980/q/75/format/webp">
-              </div>
-              <div class="swp-page"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(-375px, 0px, 0px);">
-                <img class="js-res-load"
-                  data-src="https://img.yzcdn.cn/upload_files/2017/07/12/FvBRA_j6wl7CBVuNHQPl7FHkj0b1.jpg?imageView2/2/w/980/h/980/q/75/format/webp"
-                  src="https://img.yzcdn.cn/upload_files/2017/07/12/FvBRA_j6wl7CBVuNHQPl7FHkj0b1.jpg?imageView2/2/w/980/h/980/q/75/format/webp">
-              </div>
-              <div class="swp-page page-in-view"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(0px, 0px, 0px);">
-                <img class="js-res-load"
-                  data-src="https://img.yzcdn.cn/upload_files/2017/07/12/FpetvOfbRCRmyeg32DBunok9Uvmo.jpg?imageView2/2/w/980/h/980/q/75/format/webp"
-                  src="https://img.yzcdn.cn/upload_files/2017/07/12/FpetvOfbRCRmyeg32DBunok9Uvmo.jpg?imageView2/2/w/980/h/980/q/75/format/webp">
-              </div>
-              <div class="swp-page"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(375px, 0px, 0px);">
-                <img class="js-res-load"
-                  data-src="https://img.yzcdn.cn/upload_files/2017/07/12/FqYpph8-5qfY-sCecemc7LTZb2O2.jpg?imageView2/2/w/980/h/980/q/75/format/webp"
-                  src="https://img.yzcdn.cn/upload_files/2017/07/12/FqYpph8-5qfY-sCecemc7LTZb2O2.jpg?imageView2/2/w/980/h/980/q/75/format/webp">
-              </div>
-              <div class="swp-page"
-                style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; display: block; transform: translate3d(-9999px, 0px, 0px);">
-                <img class="js-res-load"
-                  data-src="https://img.yzcdn.cn/upload_files/2017/07/12/FmgpyGwZqitXF7LWnVzmHHmCVfB4.jpg?imageView2/2/w/980/h/980/q/75/format/webp"
-                  src="https://img.yzcdn.cn/upload_files/2017/07/12/FmgpyGwZqitXF7LWnVzmHHmCVfB4.jpg?imageView2/2/w/980/h/980/q/75/format/webp">
-              </div>
-            </div>
-            <div class="swiper-pagination js-swiper-pagination">
-              <ul class="swp-thumbnail-list">
-                <li class="swiper-pagination-switch"></li>
-                <li class="swiper-pagination-switch"></li>
-                <li class="swiper-pagination-switch swiper-active-switch"></li>
-                <li class="swiper-pagination-switch"></li>
-                <li class="swiper-pagination-switch"></li>
-              </ul>
-            </div>
-          </div>
+            <swipe :lists="bannerLists"></swipe>
+            
           <!--  <script id="resize-img-script-used"></script> -->
           <div class="goods-header">
             <h2 class="title">{{details.title}}</h2>
@@ -481,9 +444,11 @@
         class="tag tag-clear js-tag-clear c-gray-darker hide" href="javascript:;">清除历史搜索</a>
     </div>
   </div>
+  <!-- 阴影层Mask -->
   <div id="yFzBKP9GDL"
     style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; transition: none 0.2s ease; opacity: 1; display: none;">
   </div>
+  <!-- 规格确认弹窗popout -->
   <div id="QfEqtDbeK9" class="sku-layout sku-box-shadow popup"
     style="overflow: hidden; position: absolute; z-index: 1000; background: white; bottom: 0px; left: 0px; right: 0px; visibility: visible; transform: translate3d(0px, 0px, 0px); transition: all 300ms ease; opacity: 1; display: none;">
     <div class="sku-layout-title name-card sku-name-card">
@@ -569,6 +534,8 @@
     <div class="motify-inner">已成功添加到购物车</div>
   </div>
   </div>
+  <div class="loading-more" v-else="!details"><span></span></div>
+</div>
 
 </body>
 

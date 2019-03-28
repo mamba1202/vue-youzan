@@ -1,3 +1,4 @@
+
 .modal-login {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #edf0f4;
@@ -1895,7 +1896,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
   margin: 5px 0 10px;
   display: block
 }
-
 .content-body hr {
   margin: 0;
   border: 0 none;
@@ -1938,7 +1938,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .content-body hr.with-margin-l {
   margin-left: 10px
 }
-
 .qrcode-container {
   background-color: #fff
 }
@@ -2595,7 +2594,7 @@ only screen and (min--moz-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5) {
   .list-finished span,
   .loading-more span {
-    background-image: url("/v2/image/loader@2x.gif")
+    background-image: url("https://b.yzcdn.cn/v2/image/loader@2x.gif")
   }
 }
 

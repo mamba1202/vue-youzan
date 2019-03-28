@@ -20,7 +20,9 @@
           details: null,
           tabIndex: 0,
           dealLists: null,
-          bannerLists: null
+          bannerLists: null,
+          skuType: 1,
+          showSku: false,
       },
       created(){
          this.getDetails()
@@ -48,10 +50,23 @@
             axios.post(url.deal,{id}).then(res=>{
                 this.dealLists = res.data.lists
             })
+        },
+        chooseSku(type){
+            this.skuType = type  //对应点击事件
+            this.showSku = true  //点击后展示阴影层和弹窗
         }
       },
       components:{
            Swipe: Swipe
+      },
+      watch:{
+          //监听showSku禁止窗口拖动
+        showSku(val,oldVal){
+            document.body.style.overflow = val ? 'hidden' : 'auto'
+            document.querySelector('html').style.overflow = val ? 'hidden' : 'auto'
+            document.body.height.overflow = val ? '100%' : 'auto'
+            document.querySelector('html').height.overflow = val ? '100%' : 'auto'
+        }
       },
       mixins: [mixin]
   })

@@ -1938,6 +1938,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
 .content-body hr.with-margin-l {
   margin-left: 10px
 }
+.swiper-wrapper{
+  height: 375px;
+  width: 375px;
+}
 .qrcode-container {
   background-color: #fff
 }

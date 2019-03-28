@@ -23,8 +23,8 @@
   <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
   <title>发现朋友圈的推荐</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <!--<link rel="stylesheet" href="./css/common.css">-->
- <!--<link rel="stylesheet" href="./css/index.css">--> 
+  <!--<link rel="stylesheet" href="./css/common.css">-->
+  <!--<link rel="stylesheet" href="./css/index.css">-->
 </head>
 
 <body class=" " style="min-height: 860px;">
@@ -34,24 +34,28 @@
         <!--<div class="js-image-swiper
    custom-image-swiper  custom-image-swiper-single" data-images="1">
         </div>-->
-        <swipe :lists="bannerLists" name="swipe.vue" v-if="bannerLists"></swipe>  <!--初始值为空  v-if="bannerLists"  数据过来时再渲染 暂时bu监听长度-->
+        <swipe :lists="bannerLists" name="swipe.vue" v-if="bannerLists"></swipe>
+        <!--初始值为空  v-if="bannerLists"  数据过来时再渲染 暂时bu监听长度-->
         <!--<a href="https://maijia.youzan.com/mars/notice/detail?id=" class="notice"></a>-->
         <div class="section-title">优店推荐</div>
         <div class="section-content shops">
           <div class="shop-wrap">
             <div class="shop-item">
               <a href="https://h5.koudaitong.com/v2/showcase/feature?alias=zjtozpgn">
-                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/09/23/FgQUVNXnvpFKFl1DIN2LXhPA1cxy.png?imageView2/2/w/300/h/0/q/75/format/png">
+                <img class="fadeIn"
+                  src="https://img.yzcdn.cn/upload_files/2016/09/23/FgQUVNXnvpFKFl1DIN2LXhPA1cxy.png?imageView2/2/w/300/h/0/q/75/format/png">
               </a>
             </div>
             <div class="shop-item">
               <a href="https://h5.koudaitong.com/v2/feature/1e22e3vtu">
-                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/08/03/FqNGnCQS1eq9nIhRg48E_UfFf9K2.png?imageView2/2/w/300/h/0/q/75/format/png">
+                <img class="fadeIn"
+                  src="https://img.yzcdn.cn/upload_files/2016/08/03/FqNGnCQS1eq9nIhRg48E_UfFf9K2.png?imageView2/2/w/300/h/0/q/75/format/png">
               </a>
             </div>
             <div class="shop-item">
               <a href="https://h5.koudaitong.com/v2/feature/8oups7zk">
-                <img class="fadeIn" src="https://img.yzcdn.cn/upload_files/2016/08/05/Fv5hhMZrtPZQWE7fape0ddEYtSuy.png?imageView2/2/w/300/h/0/q/75/format/png">
+                <img class="fadeIn"
+                  src="https://img.yzcdn.cn/upload_files/2016/08/05/Fv5hhMZrtPZQWE7fape0ddEYtSuy.png?imageView2/2/w/300/h/0/q/75/format/png">
               </a>
             </div>
           </div>
@@ -66,33 +70,32 @@
           </div>
         </div>
         <div class="hot-goods js-waterfull-wrap" data-src="">
-          <ul class="js-list js-lazy" data-src=""
-          v-infinite-scroll="getLists"
-          infinite-scroll-disabled="loading"
-          infinite-scroll-distance="30"
-          > <!--true禁止/false允许-->
+          <ul class="js-list js-lazy" data-src="" v-infinite-scroll="getLists" infinite-scroll-disabled="loading"
+            infinite-scroll-distance="30">
+            <!--true禁止/false允许-->
             <li v-for="list in lists" :key="list.id">
               <div class="goods-item">
-                  <a :href="'goods.html?id='+list.id">
+                <a :href="'goods.html?id='+list.id"> <!-- 将商品id传给goods.html -->
                   <div class="thumb img-box">
                     <img class="fadeIn" v-bind:src="list.img">
                   </div>
                   <div class="detail">
                     <div class="title">{{list.name}}</div>
                     <div class="price">￥{{list.price | currency}}</div>
-               </div>
+                  </div>
                 </a>
               </div>
             </li>
           </ul>
-          <div class="loading-more" v-show="loading"><span></span></div>    <!--true/false-->
+          <div class="loading-more" v-show="loading"><span></span></div>
+          <!--true/false-->
         </div>
         <div class="js-show-find category-guid" style="display: none;"></div>
       </div>
     </div>
     <Foot></Foot>
   </div>
-  
+
 </body>
 
 </html>

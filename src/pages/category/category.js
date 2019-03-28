@@ -7,6 +7,7 @@ import url from 'js/api.js'
 //import Foot from 'components/Foot.vue'
 import mixin from 'js/mixin.js'
 
+
 //综合排行直接去调 二级分类是方法
 
 new Vue({

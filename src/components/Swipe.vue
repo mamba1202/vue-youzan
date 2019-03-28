@@ -26,7 +26,7 @@ import Swiper from "swiper";
 import "swiper/dist/css/swiper.css";
 export default {
   name: "swipe",
-  props: {
+  props: {   //props:[lists]
     lists: {
       //type: Array,
       required: true

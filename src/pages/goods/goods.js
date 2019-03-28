@@ -5,6 +5,7 @@
   import './goods_theme.css'
   import './goods_mars.css'
   import './goods_sku.css'
+  import './goods_transition.css'
 
   import Vue from 'vue'
   import axios from 'axios'
@@ -12,6 +13,7 @@
   import mixin from 'js/mixin.js'
   import qs from 'qs'
   import Swipe from 'components/Swipe.vue'
+
  
   let {id} = qs.parse(location.search.substr(1))   //从URL上获取id
   new Vue({
@@ -64,8 +66,8 @@
         showSku(val,oldVal){
             document.body.style.overflow = val ? 'hidden' : 'auto'
             document.querySelector('html').style.overflow = val ? 'hidden' : 'auto'
-            document.body.height.overflow = val ? '100%' : 'auto'
-            document.querySelector('html').height.overflow = val ? '100%' : 'auto'
+            document.body.height = val ? '100%' : 'auto'
+            document.querySelector('html').height = val ? '100%' : 'auto'
         }
       },
       mixins: [mixin]

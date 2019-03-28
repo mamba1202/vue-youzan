@@ -4,7 +4,9 @@ let url = {
     topList: '/category/topLists',
     rank: '/category/rank',
     subList: '/category/subLists',
-    goodList:'/search/goodLists'
+    goodList:'/search/goodLists',
+    details: '/goods/details',
+    deal: '/goods/deal'
 
 }
 

@@ -4,7 +4,8 @@ import './category.css'
 import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
-import Foot from 'components/Foot.vue'
+//import Foot from 'components/Foot.vue'
+import mixin from 'js/mixin.js'
 
 //综合排行直接去调 二级分类是方法
 
@@ -54,7 +55,8 @@ new Vue({
           location.href = `search.html?keyword=${list.name}&id=${list.id}`
       }
     },
-    components:{
-        Foot: Foot
-    }
+  //  components:{
+  //      Foot: Foot
+ //   }
+ mixins: [mixin]
 })

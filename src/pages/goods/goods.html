@@ -106,7 +106,9 @@
               </div>
               <div class="js-tabber-content">
                 <!-- 本店成交 -->
-                <div class="js-part" v-show="tabIndex===1" data-type="sales">
+                <div class="js-part" 
+                v-show="tabIndex===1"
+                 data-type="sales">
                   <div class="js-traderecord-list block-list-traderecord">
                     <div class="list-header">
                       <span class="col-1">买家</span>
@@ -124,7 +126,8 @@
                 </div>
               </div>
               <!-- 商品详情 -->
-              <div class="js-part js-goods-detail goods-tabber-c" data-type="goods" v-html="details.description"
+              <div class="js-part js-goods-detail goods-tabber-c" data-type="goods" 
+              v-html="details.description"
                 v-show="tabIndex===0">
               </div>
             </div>
@@ -321,11 +324,11 @@
           <dd class="sku-quantity-contaienr">
             <dl class="clearfix">
               <div class="quantity">
-                <button class="minus disabled" type="button" disabled="true"></button>
-                <input type="text" class="txt" pattern="[0-9]*" value="1">
+                <button class="minus" type="button" :class="{disabled:skuNum===1}"></button>
+                <input type="text" class="txt" pattern="[0-9]*" :value="skuNum">
                 <button class="plus" type="button"></button>
-                <div class="response-area response-area-minus"></div>
-                <div class="response-area response-area-plus"></div>
+                <div class="response-area response-area-minus" @click="changeSkuNum(-1)"></div>
+                <div class="response-area response-area-plus" @click="changeSkuNum(1)" ></div>
               </div>
             </dl>
           </dd>

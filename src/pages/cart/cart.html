@@ -89,11 +89,11 @@
                             <!-- （- 1 + ）编辑状态下显示 完成字体 -->
                             <!---->
                             <div class="quantity">
-                              <button type="button" class="minus disabled"></button>
+                              <button type="button" class="minus" :class="{disabled: good.number===1}"></button>
                               <input type="text" pattern="[0-9]*" class="txt" v-model="good.number">
                               <button type="button" class="plus "></button>
-                              <div class="response-area response-area-minus"></div>
-                              <div class="response-area response-area-plus"></div>
+                              <div class="response-area response-area-minus" @click="reduce(good)"></div>
+                              <div class="response-area response-area-plus" @click="add(good)"></div>
                             </div>
                           </div>
                           <div class="price c-orange">
@@ -179,12 +179,20 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer" style="min-height: 86px;">
-    <div class="copyright">
-      <div class="ft-copyright "
-        style="background-image: url(https://img.yzcdn.cn/upload_files/2016/11/15/147918630760182374.png);">
-        <a class="yz-logo" href="https://www.youzan.com/?from_source=support_logo">有赞提供技术支持</a> </div>
+    <!-- 阴影层 -->
+    <div id="0SuefKPV4p" v-show="removePopup" style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;  opacity: 1;"></div>
+    <!-- 弹框 -->
+    <div id="d2tfiX27YS" v-show="removePopup" class="popout-confirm popout-box" style="overflow: hidden; position: absolute; z-index: 1000; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0px); visibility: visible; border-radius: 4px; background: white; width: 270px; padding: 15px; opacity: 1;">
+      <div class="confirm-content font-size-14" style="line-height: 20px; padding: 5px 5px 10px;">
+        {{removeMsg}}
+      </div>
+      <hr style="margin: 9px -15px 10px;">
+      <div class="btn-2-1" style="width: 47.5%;">
+          <p class="js-cancel center font-size-16" style="padding-top: 5px;" @click="removePopup=false">取消</p>
+      </div>
+      <div class="btn-2-1" style="width: 47.5%;">
+          <p class="js-ok center c-green font-size-16" style="padding-top: 5px;" @click="removeConfirm">确定</p>
+      </div>
     </div>
   </div>
 </body>

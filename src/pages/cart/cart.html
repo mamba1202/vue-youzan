@@ -36,7 +36,8 @@
               <div class="header">
                 <div class="select-group js-select-group" @click="selectShop(shop)">
                   <!-- 店铺checked -->
-                  <span class="check" :class="{checked: shop.checked}"></span>
+                  <span class="check" :class="{checked: shop.checked}" v-show="!editingShop"></span><!-- 正常状态 -->
+                  <span class="check" :class="{checked: shop.removeChecked}" v-show="editingShop"></span> <!-- 编辑状态 -->
                 </div>
                 <a class="shop-title"><i class="custom-store-img">店铺：</i>
                   {{shop.shopTitle}}
@@ -58,7 +59,8 @@
                       <div class="check-container" @click="selectGood(shop, good)">
                         <!-- 拿到店铺和商品信息 -->
                         <!-- 点击check切换图标状态 -->
-                        <span class="check" :class="{checked: good.checked}"></span>
+                        <span class="check" :class="{checked:editingShop?good.removeChecked:good.checked}"></span>
+                        <!-- :class判断是在编辑状态还是在正常情况下 -->
                       </div>
                       <div class="name-card clearfix">
                         <a>
@@ -154,7 +156,9 @@
             </div>
             <div class="bottom-cart clear-fix">
               <div class="select-all" @click="selectAll">
-                <span class="check" :class="{checked: allSelected}"></span> 全选
+                <span class="check" :class="{checked:editingShop?allRemoveSelected:allSelected}"></span>
+                <!-- 判断是正常情况还是编辑情况下的全选 -->
+                全选
               </div>
               <!-- 显示状态 -->
               <div class="total-price" v-show="!editingShop">
@@ -166,8 +170,8 @@
                 结算 (3)
               </button>
               <!-- 编辑状态 -->
-              <button href="javascript:;" disabled="disabled" class="j-delete-goods btn font-size-14 btn-red"
-                v-show="editingShop">
+              <button href="javascript:;" :disabled="!removeLists.length"
+                class="j-delete-goods btn font-size-14 btn-red" v-show="editingShop">
                 删除
               </button>
             </div>

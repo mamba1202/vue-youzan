@@ -18,7 +18,7 @@ new Vue({
         editingShopIndex: -1,
     },
     computed: {
-        allSelected: {   // allSelected全选
+        allSelected: {   // allSelected正常情况下全选
             get() {       //判断店铺进而判断全选状态
                 if (this.lists && this.lists.length) {
                     return this.lists.every(shop => {  //判断店铺的checked
@@ -36,7 +36,23 @@ new Vue({
                 })
             }
         },
-        selectLists() {   //selectLists选中的商品列表
+        allRemoveSelected: {   // allRemoveSelected编辑状态下全选
+            get() {
+                if (this.editingShop) {
+                    return this.editingShop.removeChecked  //编辑的店铺有没有被选中
+                }
+                return false
+            },
+            set(newVal) {
+                if (this.editingShop) {
+                    this.editingShop.removeChecked = newVal
+                    this.editingShop.goodsList.forEach(good => {
+                        good.removeChecked = newVal
+                    })
+                }
+            }
+        },
+        selectLists() {   //selectLists正常情况选中的商品列表
             if (this.lists && this.lists.length) {
                 let arr = []
                 let total = 0
@@ -52,8 +68,17 @@ new Vue({
                 return arr
             }
         },
-        removeLists() {  //删除商品
-
+        removeLists() {  //编辑情况下商品选中
+            if (this.editingShop) {
+                let arr = []
+                this.editingShop.goodsList.forEach(good => {
+                    if (good.removeChecked) {
+                        arr.push(good)
+                    }
+                })
+                return arr
+            }
+            return []
         }
     },
     created() {
@@ -69,28 +94,31 @@ new Vue({
                     shop.editing = false   //是否可编辑
                     shop.editingMsg = '编辑'  //编辑状态的信息
                     shop.goodsList.forEach(good => {
-                        good.checked = true
+                        good.checked = true       //(正常状态下商品是否选中删除）
                         good.removeChecked = false //（编辑状态下商品是否选中删除）
                     })
                 }),
                     this.lists = list
             })
         },
-        selectGood(shop, good) {
-            good.checked = !good.checked
-            shop.checked = shop.goodsList.every(good => {
-                return good.checked    //遍历商品 如果每个都是true 则shop.checked为true
+        selectGood(shop, good) { //商品
+            let attr = this.editingShop ? 'removeChecked' : 'checked'  //判断是在编辑还是正常状态下 
+            good[attr] = !good[attr]
+            shop[attr] = shop.goodsList.every(good => {
+                return good[attr]    //遍历商品 如果每个都是true 则shop.checked为true
             })
         },
-        selectShop(shop) {
-            shop.checked = !shop.checked
+        selectShop(shop) {  //店铺
+            let attr = this.editingShop ? 'removeChecked' : 'checked'
+            shop[attr] = !shop[attr]
             shop.goodsList.forEach(good => {
-                good.checked = shop.checked //商品状态根据店铺状态jued
+                good[attr] = shop[attr] //商品状态根据店铺状态决定
             })
         },
-        selectAll() {
+        selectAll() {   //全选
+            let attr = this.editingShop ? 'allRemoveSelected' : 'allSelected'
             console.log(this.allSelected)
-            this.allSelected = !this.allSelected
+            this[attr] = !this[attr]
         },
         edit(shop, shopIndex) {
             shop.editing = !shop.editing //编辑-正常状态切换

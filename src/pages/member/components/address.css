@@ -224,9 +224,9 @@ body {
 }
 
 .section {
-  -webkit-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  -moz-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
+  -webkit-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  -moz-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
   border-top: 2px solid #e5e5e5;
   border-bottom: 2px solid #e5e5e5
 }
@@ -274,9 +274,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .stick-bottom-row.block {
-  -webkit-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  -moz-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
+  -webkit-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  -moz-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
   border-top: 2px solid #e5e5e5;
   background-color: #fff
 }
@@ -319,9 +319,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
   display: inline-block;
   padding-right: 8px;
   margin-right: 8px;
-  -webkit-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  -moz-border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
-  border-image: url("https://b.yzcdn.cn2/image/pf/ui/border-line.png") 2 stretch;
+  -webkit-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  -moz-border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
+  border-image: url("https://b.yzcdn.cn/v2/image/pf/ui/border-line.png") 2 stretch;
   border-right: 2px solid #e5e5e5
 }
 
@@ -596,13 +596,13 @@ only screen and (min-device-pixel-ratio: 1.5) {
   background-image: url("https://b.yzcdn.cn/v2/image/pf/icon/uncheck.png")
 }
 
-.address-list .address-item::after {
+.address-list .address-item .address-edit {
   position: absolute;
-  content: '修改';
+  /* content: '修改'; */
   font-size: 12px;
   padding-left: 25px;
   color: #999;
-  top: 5px;
+  top: 20px;
   right: 5px;
   width: 30px;
   height: 20px;
@@ -666,9 +666,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .item-info {
-  -webkit-border-image: url("/v2/image/wap/border-line-2.png") 2 stretch;
-  -moz-border-image: url("/v2/image/wap/border-line-2.png") 2 stretch;
-  border-image: url("/v2/image/wap/border-line-2.png") 2 stretch;
+  -webkit-border-image: url("https://b.yzcdn.cn/v2/image/wap/border-line-2.png") 2 stretch;
+  -moz-border-image: url("https://b.yzcdn.cn/v2/image/wap/border-line-2.png") 2 stretch;
+  border-image: url("https://b.yzcdn.cn/v2/image/wap/border-line-2.png") 2 stretch;
   border-top: 2px solid #e5e5e5;
   position: relative;
   padding: 15px 10px;

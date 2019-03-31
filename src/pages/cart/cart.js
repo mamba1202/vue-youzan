@@ -71,7 +71,7 @@ new Vue({
                 return arr
             }
         },
-        removeLists() {  //编辑情况下商品选中
+        removeLists() {  //编辑情况下商品选中--要删除的商品列表
             if (this.editingShop) {
                 let arr = []
                 this.editingShop.goodsList.forEach(good => {
@@ -152,17 +152,19 @@ new Vue({
                 good.number++
             })
         },
+        //单删
         remove(shop, shopIndex, good, goodIndex) {
             this.removePopup = true
             this.removeData = { shop, shopIndex, good, goodIndex }
             this.removeMsg = '确定要删除该商品吗？'
         },
+        //删除多个
         removeList() {
             this.removePopup = true
             this.removeMsg = `确定将所选${this.removeLists.length}个商品删除？`
         },
         removeConfirm() {
-            if (this.$data.removeMsg === '确定要删除该商品吗？') {
+            if (this.removeMsg === '确定要删除该商品吗？') {
                 let { shop, shopIndex, good, goodIndex } = this.removeData
                 axios.post(url.cartRemove, {  //先改变数据库再进行本地操作
                     id: good.id
@@ -176,17 +178,17 @@ new Vue({
                     this.removePopup = false  //阴影弹框取消
                       // this.$refs[`goods-${shopIndex}-${goodIndex}`][0].style.left = '0px'
                 })
-            } else {
+            } else {   //多个商品删除
                 let ids = []
-                this.removeLists.forEach(good => {
+                this.removeLists.forEach(good => {   //遍历要删除的商品列表
                     ids.push(good.id)
                 })
                 axios.post(url.cartRemoveMore, {
                     ids
                 }).then(res => {
                     let arr = []
-                    this.editingShop.goodsList.forEach(good => {
-                        let index = this.removeLists.findIndex(item => {
+                    this.editingShop.goodsList.forEach(good => {        //要编辑的商品列表
+                        let index = this.removeLists.findIndex(item => {  //商品是不是在删除列表里
                             return item.id == good.id
                         })
                         if (index === -1) {
@@ -194,9 +196,9 @@ new Vue({
                         }
                     })
                     if (arr.length) {
-                        this.editingShop.goodsList = arr
+                        this.editingShop.goodsList = arr    //还有商品
                     } else {
-                        this.lists.splice(this.editingShopIndex, 1)
+                        this.lists.splice(this.editingShopIndex, 1)  //没商品
                         this.removeShop()
                     }
                     this.removePopup = false

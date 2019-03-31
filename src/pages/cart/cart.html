@@ -101,7 +101,7 @@
                         </div>
                         <div class="error-box"></div>
                       </div>
-                      <div class="delete-btn"><span>删除</span></div>
+                      <div class="delete-btn" @click="remove(shop, shopIndex, good, goodIndex) "><span>删除</span></div>  <!-- 删除单个商品 -->
                     </div>
                   </li>
                 </ul>
@@ -170,8 +170,12 @@
                 结算 (3)
               </button>
               <!-- 编辑状态 -->
-              <button href="javascript:;" :disabled="!removeLists.length"
-                class="j-delete-goods btn font-size-14 btn-red" v-show="editingShop">
+              <button href="javascript:;"
+               :disabled="!removeLists.length"
+                class="j-delete-goods btn font-size-14 btn-red"
+                 v-show="editingShop"
+                 @click="removeList"   
+                 >   <!-- @click="removeList" 删除多个  -->
                 删除
               </button>
             </div>

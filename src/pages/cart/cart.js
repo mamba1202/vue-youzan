@@ -186,7 +186,8 @@ new Vue({
                     }
                     this.removePopup = false  //阴影弹框取消
                       // this.$refs[`goods-${shopIndex}-${goodIndex}`][0].style.left = '0px'
-                })
+                     // this.$refs[`goods-${shopIndex}-${goodIndex}`][0].style.left='0px'  //DOMh]还原样式
+                    })
             } else {   //多个商品删除
                 let ids = []
                 this.removeLists.forEach(good => {   //遍历要删除的商品列表
@@ -237,6 +238,7 @@ new Vue({
            if(endX - good.startX > 100){
             left = '0px'
          }
+         //console.log(this.$refs[`goods-${shopIndex}-${goodIndex}`])
          Volecity(this.$refs[`goods-${shopIndex}-${goodIndex}`],{
              left  //对象简捷写法   volecity 第一个参数DOM节点，第二个参数opition配置
          })

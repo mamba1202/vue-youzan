@@ -55,9 +55,11 @@
                     :class="{editing:shop.editing}"
                     v-for="(good,goodIndex) in shop.goodsList"
                     :ref="'goods-'+shopIndex+'-'+goodIndex"  
+                    :key="good.id"
                     @touchstart="start($event,good)"
                     @touchend="end($event,shopIndex,good,goodIndex)"
                     >
+                    <!-- :key="goodIndex不是唯一的" -->
                     <!--:class 是否处在编辑状态 -->
                     <div>
                       <!-- 商品checked -->

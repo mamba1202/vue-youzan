@@ -8,6 +8,7 @@ import axios from 'axios'
 import url from 'js/api.js'
 import mixin from 'js/mixin.js'
 import Volecity from 'velocity-animate'
+import Cart from 'js/cartService.js'
 
 
 new Vue({
@@ -138,21 +139,28 @@ new Vue({
         },
         reduce(good) {
             if (good.number === 1) return
-            axios.post(url.cartReduce, {
-                id: good.id,      //先更改数据库数据再进行本地操作
-                number: 1
-            }).then(res => {
+            // axios.post(url.cartReduce, {
+            //     id: good.id,      //先更改数据库数据再进行本地操作
+            //     number: 1
+            // }).then(res => {
+            //     good.number--
+            // })
+            Cart.reduce(good.id).then(res=>{
                 good.number--
             })
         },
         add(good) {
-            axios.post(url.addCart, {
-                id: good.id,      //先更改数据库数据再进行本地操作
-                number: 1
-            }).then(res => {
+            // axios.post(url.addCart, {
+            //     id: good.id,      //先更改数据库数据再进行本地操作
+            //     number: 1
+            // }).then(res => {
+            //     good.number++
+            // })
+            Cart.add(good.id).then(res=>{
                 good.number++
             })
         },
+        
         //单删
         remove(shop, shopIndex, good, goodIndex) {
             this.removePopup = true
@@ -167,7 +175,7 @@ new Vue({
         removeConfirm() {
             if (this.removeMsg === '确定要删除该商品吗？') {
                 let { shop, shopIndex, good, goodIndex } = this.removeData
-                axios.post(url.cartRemove, {  //先改变数据库再进行本地操作
+               fetch(url.cartRemove, {  //先改变数据库再进行本地操作
                     id: good.id
                 }).then(res => {
                     shop.goodsList.splice(goodIndex, 1)  //删除店铺下的商品列表（通过下标删除）

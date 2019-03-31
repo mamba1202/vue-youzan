@@ -51,8 +51,13 @@
               <!---->
               <div>
                 <ul class="js-list block block-list block-list-cart border-0">
-                  <li class="block-item block-item-cart" :class="{editing:shop.editing}"
-                    v-for="(good,goodIndex) in shop.goodsList">
+                  <li class="block-item block-item-cart" 
+                    :class="{editing:shop.editing}"
+                    v-for="(good,goodIndex) in shop.goodsList"
+                    :ref="'goods-'+shopIndex+'-'+goodIndex"  
+                    @touchstart="start($event,good)"
+                    @touchend="end($event,shopIndex,good,goodIndex)"
+                    >
                     <!--:class 是否处在编辑状态 -->
                     <div>
                       <!-- 商品checked -->

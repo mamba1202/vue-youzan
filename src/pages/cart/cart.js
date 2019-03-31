@@ -7,6 +7,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
 import mixin from 'js/mixin.js'
+import Volecity from 'velocity-animate'
 
 
 new Vue({
@@ -18,7 +19,7 @@ new Vue({
         editingShopIndex: -1,
         removePopup: false, //是否要删除,
         removeData: null,
-        removeMsg: ''
+        removeMsg: '',
     },
     computed: {
         allSelected: {   // allSelected正常情况下全选
@@ -214,6 +215,24 @@ new Vue({
                 shop.editingMsg = '编辑'   //编辑字体
             })
 
+        },
+        start(e,good){
+            good.startX = e.changedTouches[0].clientX     //stsartX不需要给初始值 --因为不需要响应式
+        },
+        end(e,shopIndex,good,goodIndex){
+            let endX = e.changedTouches[0].clientX 
+            let left = '0'
+           console.log(endX, good.startX)
+           if(good.startX - endX > 100){
+              left = '-60px'
+           }
+           if(endX - good.startX > 100){
+            left = '0px'
+         }
+         Volecity(this.$refs[`goods-${shopIndex}-${goodIndex}`],{
+             left  //对象简捷写法   volecity 第一个参数DOM节点，第二个参数opition配置
+         })
+           //this.$refs[`gooss-${shopIndex}-${goodindex}`]  --拿到商品dom节点
         }
     },
     mixins: [mixin]

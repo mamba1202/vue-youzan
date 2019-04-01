@@ -10,14 +10,17 @@ let routes = [{
    path: '/address',
    component: require('./components/address.vue'),
    children:[{
-      path: '',
+      //path: '',
       //component: require('./components/all.vue')
+      path: '',
       redirect: 'all'
    },{
       path: 'all',
+      name: 'all',
       component: require('./components/all.vue')
    },{
       path: 'form',
+      name: 'form',
       component: require('./components/form.vue')
    }]
 }]

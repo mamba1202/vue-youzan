@@ -1,5 +1,5 @@
 import Address from 'js/addressService.js'
-
+import { mapState } from 'vuex'
 export default {
     data() {
         return {
@@ -19,6 +19,17 @@ export default {
             // instance: this.$router.query.instance
         }
     },
+    // computed: {
+    //     lists() {
+    //       return this.$store.state.lists
+    //     }
+    //   },
+    //computed: mapState['lists'],
+computed:{
+    ...mapState({
+      lists: state => state.lists
+      })
+},
     created() {
         let query = this.$route.query
         this.type = query.type
@@ -38,44 +49,54 @@ export default {
             //需要做非空和合法性校验
             let { name, tel, provinceValue, cityValue, districtValue, address } = this
             let data = { name, tel, provinceValue, cityValue, districtValue, address }
-        //     if (this.type == 'add') {
-        //         Address.add(data).then(res => {
-        //             this.$router.go(-1)  //保存成功后 --返回上一页也就是跳转到地址列表
-        //         })
-        //     }
-        //     if (this.type == 'edit') {      //编辑状态
-        //         data.id = this.id
-        //         Address.update(data).then(res => {
-        //             this.$router.go(-1) //保存成功后 --返回上一页也就是跳转到地址列表
-        //         })
-        //     }
+           if (this.type == 'add') {
+            //    Address.add(data).then(res => {
+            //         this.$router.go(-1)  //保存成功后 --返回上一页也就是跳转到地址列表
+            //     })
+            this.$store.dispatch('addAction', data)
+             }
+             if (this.type == 'edit') {      //编辑状态
+                // data.id = this.id
+                // Address.update(data).then(res => {
+                //      this.$router.go(-1) //保存成功后 --返回上一页也就是跳转到地址列表
+                //})
+                this,$store.dispatch('updateAction',instance)
+            }
+         },
+        // if(this.type === 'edit') {
+        //     data.id = this.id
+        //     Address.update(data).then(res => {
+        //       this.$router.go(-1)
+        //     })
+        //   }else {
+        //     Address.add(data).then(res => {
+        //       this.$router.go(-1)
+        //     })
+        //   }
         // },
-        if(this.type === 'edit') {
-            data.id = this.id
-            Address.update(data).then(res => {
-              this.$router.go(-1)
-            })
-          }else {
-            Address.add(data).then(res => {
-              this.$router.go(-1)
-            })
-          }
-        },
-        remove(){
-          if(window.confirm('确认删除?')){
-              Address.remove(this.id).then(res=>{
-                this.$router.go(-1)
-              })
-          }
-        },
+        remove() {
+            if (window.confirm("确认删除?")) { 
+            //   Address.remove(this.id).then(res => {
+            //     this.$router.go(-1)
+            //   })
+            this.$store.dispatch('removeAction',this.id)
+            } 
+          },
         setDefault(){
-            Address.setDefault(this.id).then(res=>{
-                this.$router.go(-1)
-            })
+            // Address.setDefault(this.id).then(res=>{
+            //     this.$router.go(-1)
+            // })
+            this.$store.dispatch('setDefaultAction',this.id)
         }
     },
     //监听provinceValue的变化拿到市级信息
     watch: {
+        lists:{
+            handler(){
+                this.$router.go(-1)
+            },
+          deep: true
+        },
         provinceValue(val) {
             if (val == -1) return
             //找到省级在列表中的位置通过位置拿到他的下一级列表

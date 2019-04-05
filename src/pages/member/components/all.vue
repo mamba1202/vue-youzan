@@ -14,7 +14,7 @@
         @click="toEdit(list)"
         :class="{'address-item-default':list.isDefault}"
       >
-      <!--@click="toEdit(list)" 将地址信息传递过去-->
+        <!--@click="toEdit(list)" 将地址信息传递过去-->
         <div class="address-title">{{list.name}} {{list.tel}}</div>
         <p>{{list.province}}{{list.city}}{{list.county}}{{list.address}}</p>
         <a class="address-edit">修改</a>
@@ -38,25 +38,36 @@
 </template>
 
 <script>
-import Address from "js/addressService.js";
+//import Address from "js/addressService.js"
 export default {
-  data() {
-    return {
-      lists: null
-    };
+  // data() {
+  //   return {
+  //     lists: null
+  //   };
+  // },
+  // created() {
+  //   Address.list().then(res => {
+  //     this.lists = res.data.lists;
+  //   });
+  // },
+  computed: {
+    lists() {
+      return this.$store.state.lists;
+    }
   },
   created() {
-    Address.list().then(res => {
-      this.lists = res.data.lists;
-    });
+    this.$store.dispatch("getLists");
   },
   methods: {
     toEdit(list) {
       // this.$router.push({ path: "/address/form" })
-      this.$router.push({name: 'form', query:{
-        type: 'edit',
-        instance: list  //地址实例
-      }})
+      this.$router.push({
+        name: "form",
+        query: {
+          type: "edit",
+          instance: list //地址实例
+        }
+      });
     }
   }
 };

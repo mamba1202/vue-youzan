@@ -540,7 +540,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 .block-list-cart .clear-block {
   padding-bottom: 10px;
-  background-color: #fff
+  background-color: #fff;
+  margin-bottom: 35px;
 }
 
 .block-list-cart .clear-btn {
@@ -1540,7 +1541,6 @@ body.body-fixed-bottom {
   padding-bottom: 85px;
   background-color: #f8f8f8
 }
-
 .bale-cart-title {
   line-height: 16px;
   padding: 10px 10px 10px 40px;

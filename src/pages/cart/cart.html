@@ -156,6 +156,7 @@
                 <button class="btn clear-btn js-clear">清空失效商品</button>
               </div>
             </div>
+          
           </div>
           <div style="padding:0;" class="js-bottom-opts bottom-fix">
             <div class="go-shop-tip js-go-shop-tip c-orange font-size-12">
@@ -172,7 +173,7 @@
                 合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);">{{total | currency}}</span>
                 <p class="c-gray-dark">不含运费</p>
               </div>
-              <button href="javascript:;" :disabled="!selectLists.length" v-show="!editingShop"
+              <button  @click="alert" href="javascript:;" :disabled="!selectLists.length" v-show="!editingShop"
                 class="js-go-pay btn btn-orange-dark font-size-14">
                 结算 (3)
               </button>
@@ -189,7 +190,7 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
     <!-- 阴影层 -->
     <div id="0SuefKPV4p" v-show="removePopup" style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;  opacity: 1;"></div>
     <!-- 弹框 -->

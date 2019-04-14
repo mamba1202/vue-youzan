@@ -243,7 +243,9 @@ new Vue({
              left  //对象简捷写法   volecity 第一个参数DOM节点，第二个参数opition配置
          })
            //this.$refs[`gooss-${shopIndex}-${goodindex}`]  --拿到商品dom节点
-        }
+        },
+        alert(){
+            alert(` '结算' 页面暂未做`)},
     },
     mixins: [mixin]
 

@@ -23,7 +23,7 @@ new Vue({
         details: null,
         tabIndex: 0,
         dealLists: null,
-        bannerLists: null,
+        SwipeLists: null,
         skuType: 1,
         showSku: false,
         skuNum: 1,
@@ -36,6 +36,7 @@ new Vue({
     methods: {
         getDetails() {
             axios.post(url.details, { id }).then(res => {
+                //先修改数据结构再赋值
                 this.details = res.data.data
                 this.bannerLists = []
                 this.details.imgs.forEach(item => {
@@ -66,21 +67,21 @@ new Vue({
             if (num < 0 & this.skuNum === 1) return
             this.skuNum += num
         },
-        addCart(){
+        addCart() {
             axios.post(url.addCart, {
-                 id,
-                 number: this.skuNum
-                }).then(res => {
-               if(res.data.status === 200){
-                   this.showSku = false
-                   this.isAddCart = true
-                   this.showAddMessage = true
+                id,
+                number: this.skuNum
+            }).then(res => {
+                if (res.data.status === 200) {
+                    this.showSku = false
+                    this.isAddCart = true
+                    this.showAddMessage = true
 
-                   setTimeout(()=>{
-                    this.showAddMessage = false
-                   },1000)
+                    setTimeout(() => {
+                        this.showAddMessage = false
+                    }, 1000)
 
-               }
+                }
             })
         }
     },

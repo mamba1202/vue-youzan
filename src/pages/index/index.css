@@ -143,7 +143,10 @@ img {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden
 }
-
+.swiper-container{
+  width: 375px ;
+  height: 180px;
+}
 .container {
   background-color: #f4f4f4
 }
@@ -266,8 +269,8 @@ only screen and (min-device-pixel-ratio:1.5) {
 
 .swiper-pagination {
   margin: 0;
-  text-align: right;
   position: absolute;
+  text-align: center;
   bottom: 5px;
   width: 100%;
   z-index: 1

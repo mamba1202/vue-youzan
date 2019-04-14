@@ -1,4 +1,6 @@
-
+.swiper-container{
+height: 375px;
+}
 .modal-login {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #edf0f4;
@@ -1939,6 +1941,10 @@ only screen and (min-device-pixel-ratio: 1.5) {
   margin-left: 10px
 }
 .swiper-wrapper{
+  height: 375px;
+  width: 375px;
+}
+.swiper-pagination .swiper-pagination-clickable .swiper-pagination-bullets{
   height: 375px;
   width: 375px;
 }

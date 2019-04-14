@@ -35,8 +35,7 @@ new Vue({
             if(index===0){
                   this.getRank()
             }else{
-                axios.post(url.subList,{
-                    id:id}).then(res=>{
+                axios.post(url.subList,{id}).then(res=>{
                     this.subData = res.data.data
            }).catch(err=>{
                console.log('err')
@@ -52,7 +51,7 @@ new Vue({
 },
      toSearch(list){
           //跳转到search页面 --keyWord分类名称
-          debugger
+          //debugger
           location.href = `search.html?keyword=${list.name}&id=${list.id}`
       }
     },

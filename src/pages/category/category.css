@@ -363,7 +363,6 @@ only screen and (min-device-pixel-ratio:1.5) {
 
 .container {
   overflow-y: hidden;
-  position: relative
 }
 
 .content {
@@ -377,7 +376,8 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .custom-search {
-  position: absolute;
+  display: flex;
+  position: fixed;
   top: 0;
   left: 0;
   padding: 6px 15px;
@@ -425,7 +425,9 @@ only screen and (min-device-pixel-ratio:1.5) {
 .custom-search form::-webkit-input-placeholder {
   color: #d7d7d7
 }
-
+.custom-search-input{
+ 
+}
 .custom-search form .custom-search-input {
   margin: 0;
   padding: 0 10px 0 40px;
@@ -433,7 +435,7 @@ only screen and (min-device-pixel-ratio:1.5) {
   -moz-appearance: none;
   border-radius: 0;
   height: 32px;
-  width: 100%;
+  width: 330px;
   box-sizing: border-box;
   border: 0 none;
   outline: none;

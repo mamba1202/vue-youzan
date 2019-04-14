@@ -18,15 +18,16 @@
     </div>
     <div class="swiper-pagination"></div>
     <!--分页器-->
-    
+
   </div>
 </template>
-<script>
+/*<script>
 import Swiper from "swiper";
 import "swiper/dist/css/swiper.css";
 export default {
   name: "swipe",
-  props: {   //props:[lists]
+  props: {
+    //props:[lists]
     lists: {
       //type: Array,
       required: true
@@ -41,14 +42,13 @@ export default {
       loop: true,
       pagination: {
         el: ".swiper-pagination",
-         clickable: true,
+        clickable: true
       },
       spaceBetween: 30,
-      centeredSlides: true,
       autoplay: {
         delay: 2500,
-        disableOnInteraction: false,
-      },
+        disableOnInteraction: false
+      }
     });
     // console.log('mounted',document.querySelectorAll(".swiper-slide"));
   }
@@ -67,5 +67,8 @@ export default {
 .swiper-slide img {
   width: 100%;
   height: 100%;
+}
+.swiper-pagination{
+  text-align: center; 
 }
 </style>

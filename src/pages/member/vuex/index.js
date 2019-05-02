@@ -35,27 +35,27 @@ const store = new Vuex.Store({
     setDefault(state, id) {
       let lists = state.lists
       lists.forEach(item => {
-        item.isDefault = item.id == id ? true:false
+        item.isDefault = item.id == id ? true : false
       })
     }
   },
   actions: {
-    getLists({commit}) {
+    getLists({ commit }) {
       Address.list().then(res => {
         commit('init', res.data.lists)
       })
     },
-    addAction({commit}, instance) {
+    addAction({ commit }, instance) {
       Address.add(instance).then(res => {
         commit('add', instance)
       })
     },
-    removeAction({commit}, id) {
+    removeAction({ commit }, id) {
       Address.remove(id).then(res => {
         commit('remove', id)
       })
     },
-    updateAction({commit}, instance) {
+    updateAction({ commit }, instance) {
       Address.update(instance).then(res => {
         // 实际开发使用
         // commit('update', res.data.data)
@@ -66,7 +66,7 @@ const store = new Vuex.Store({
         commit('update', data)
       })
     },
-    setDefaultAction({commit}, id) {
+    setDefaultAction({ commit }, id) {
       Address.setDefault(id).then(res => {
         commit('setDefault', id)
       })

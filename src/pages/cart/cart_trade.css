@@ -3030,7 +3030,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .name-card .detail {
-  margin-left: 68px;
   width: auto;
   position: relative
 }

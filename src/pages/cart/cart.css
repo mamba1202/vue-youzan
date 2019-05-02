@@ -599,7 +599,8 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .block-list-cart .block-item-cart .name-card {
-  padding-right: 10px
+  padding-right: 10px;
+  display: flex;
 }
 
 .block-list-cart .block-item-cart .name-card .thumb {
@@ -621,7 +622,9 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .block-list-cart .block-item-cart .name-card .detail {
-  margin-left: 98px
+ width: 200px;
+ height: 40px;
+ text-align: center;
 }
 
 .block-list-cart .block-item-cart .name-card .detail .sku {

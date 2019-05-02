@@ -35,18 +35,13 @@
         </div>
       </div>
     </div>
-    <div class="block section js-save block-control-btn" @click="add">
-      <div class="block-item c-blue center">保存</div>
+    <div class="block section js-save block-control-btn" @click="save">
+      <div class="block-item c-blue center">{{ type ==="add" ?'添加': '修改'}}</div>
     </div>
-    <div class="block section js-delete  block-control-btn" 
-    v-show="type=='edit'"
-    @click="remove"
-    >
+    <div class="block section js-delete  block-control-btn" v-show="type=='edit'" @click="remove">
       <div class="block-item c-red center">删除</div>
     </div>
-    <div class="block stick-bottom-row center js-save-default"
-     v-show="type=='edit'"
-      @click="setDefault">
+    <div class="block stick-bottom-row center js-save-default" v-show="type=='edit'" @click="setDefault">
       <button class="btn btn-standard js-save-default-btn">设为默认收货地址</button>
     </div>
   </div>
@@ -55,6 +50,8 @@
 
 
 <style scoped>
-
+@import "./address.css";
+@import "./address_base.css";
 </style>
+
 

@@ -8,7 +8,7 @@
       v-if="lists&&lists.length"
     >
       <a
-        class="block-item js-address-item address-item "
+        class="block-item js-address-item address-item address-field"
         v-for="list in lists"
         :key="list.id"
         @click="toEdit(list)"
@@ -19,10 +19,6 @@
         <p>{{list.province}}{{list.city}}{{list.county}}{{list.address}}</p>
         <a class="address-edit">修改</a>
       </a>
-    </div>
-    <div v-if="!lists&&lists.length">
-      <!-- 空状态 -->
-      没有地址请添加
     </div>
     <div class="block stick-bottom-row center">
       <router-link
@@ -55,8 +51,10 @@ export default {
       return this.$store.state.lists;
     }
   },
-  created() {
-    this.$store.dispatch("getLists");
+  created(){
+     if(!this.lists){
+      this.$store.dispatch('getLists')
+    }
   },
   methods: {
     toEdit(list) {

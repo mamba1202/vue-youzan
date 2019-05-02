@@ -1,3 +1,4 @@
+import 'css/common.css'
 import './member.css'
 import Vue from 'vue'
 import router from './router'

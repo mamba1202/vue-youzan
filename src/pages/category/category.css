@@ -778,7 +778,6 @@ html {
 .inner-content {
   width: 100%;
   margin-bottom: 50px;
-  overflow-y: scroll;
 }
 
 .inner-content,
@@ -897,7 +896,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .hot-goods {
-  position: relative
+  overflow: hidden;
 }
 
 .hot-goods .goods-item {

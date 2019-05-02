@@ -134,7 +134,7 @@
 
 body,
 html {
-  -webkit-tap-highlight-color: transparent
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
@@ -148,7 +148,8 @@ img {
   height: 180px;
 }
 .container {
-  background-color: #f4f4f4
+  background-color: #f4f4f4;
+  overflow-x: hidden; overflow-y: auto; 
 }
 
 .with-bottom-nav {

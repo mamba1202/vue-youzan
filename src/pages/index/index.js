@@ -23,7 +23,8 @@ new Vue({
         pageSize: 6,
         loading: false,  //可以继续加载
         allLoaded: false,
-        bannerLists: null
+        bannerLists: null,
+        showSku:false,
     },
     created(){
         this.getLists()
@@ -61,6 +62,15 @@ new Vue({
     components:{
         Foot: Foot, //注入
         Swipe: Swipe
+    },
+    watch: {
+        //监听showSku禁止窗口拖动
+        showSku(val, oldVal) {
+            document.body.style.overflow = val ? 'hidden' : 'auto'
+            document.querySelector('html').style.overflow = val ? 'hidden' : 'auto'
+            document.body.height = val ? '100%' : 'auto'
+            document.querySelector('html').height = val ? '100%' : 'auto'
+        }
     },
     mixins: [mixin]
 })

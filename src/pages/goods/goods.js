@@ -83,7 +83,9 @@ new Vue({
 
                 }
             })
-        }
+        },
+        alert(){
+            alert(` '结算' 页面暂未做`)},
     },
     components: {
         Swipe: Swipe

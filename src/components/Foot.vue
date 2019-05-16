@@ -4,7 +4,7 @@
       <li :class="{active: index===curIndex}"
        v-for="(list,index) in navConfig"
         @click="changeNav(list,index)">
-        <a><i :class="list.icon"></i><div>{{list.name}}</div></a></li>
+        <a><i :class="list.icon" ></i><div>{{list.name}}</div></a></li>
     </ul>
   </div> 
 </template>

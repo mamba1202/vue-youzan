@@ -12,51 +12,60 @@ import mixin from 'js/mixin.js'
 
 new Vue({
     el: "#app",
-    data:{
-      topLists: null,
-      topIndex: 0,  //一级分类下标
-      subData: null, //数据形式  不是列表
-      rankData: null,
+    data: {
+        topLists: null,
+        topIndex: 0,  //一级分类下标
+        subData: null, //数据形式  不是列表
+        rankData: null,
     },
-    created(){
-       this.getTopList()
-       this.getSubList(0)
+    created() {
+        this.getTopList()
+        this.getSubList(0)
     },
-    methods:{
-        getTopList(){
-            axios.get(url.topList).then(res=>{
-                     this.topLists = res.data.lists
-            }).catch(err=>{
+    methods: {
+        getTopList() {
+            axios.get(url.topList).then(res => {
+                this.topLists = res.data.lists
+            }).catch(err => {
                 console.log('err')
             })
         },
-        getSubList(index,id){   //从一级分类获取的id
+        getSubList(index, id) {   //从一级分类获取的id
             this.topIndex = index  // 当前的和拿过来的是否相等
-            if(index===0){
-                  this.getRank()
-            }else{
-                axios.post(url.subList,{id}).then(res=>{
+            if (index === 0) {
+                this.getRank()
+            } else {
+                axios.post(url.subList, { id }).then(res => {
                     this.subData = res.data.data
-           }).catch(err=>{
-               console.log('err')
-           })
+                }).catch(err => {
+                    console.log('err')
+                })
+            }
+        },
+        getRank() {
+            axios.get(url.rank).then(res => {
+                this.rankData = res.data.data
+            }).catch(err => {
+                console.log('err')
+            })
+        },
+        toSearch(list) {
+            //跳转到search页面 --keyWord分类名称
+            //debugger
+            location.href = `search.html?keyword=${list.name}&id=${list.id}`
         }
-      },
-      getRank(){
-        axios.get(url.rank).then(res=>{
-            this.rankData = res.data.data
-   }).catch(err=>{
-       console.log('err')
-   })
-},
-     toSearch(list){
-          //跳转到search页面 --keyWord分类名称
-          //debugger
-          location.href = `search.html?keyword=${list.name}&id=${list.id}`
-      }
     },
-  //  components:{
-  //      Foot: Foot
- //   }
- mixins: [mixin]
+    //  components:{
+    //      Foot: Foot
+    //   }
+    mixins: [mixin]
 })
+
+
+
+
+
+
+
+
+

@@ -47,8 +47,8 @@ export default {
     methods: {
         save() {
             // 需要做非空和合法性校验
-            let { name, tel, provinceValue, cityValue, districtValue, address, id } = this
             // 校验
+            let { name, tel, provinceValue, cityValue, districtValue, address, id } = this
             if (!name.trim()) {
                 alert("请填写姓名");
                 return;
@@ -70,7 +70,6 @@ export default {
                 return;
             }
             // 校验end！
-
             let data = { name, tel, provinceValue, cityValue, districtValue, address }
             if (this.type === "add") {
                 this.$store.dispatch("addAction", data);

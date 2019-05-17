@@ -39,6 +39,7 @@ const store = new Vuex.Store({
       })
     }
   },
+
   actions: {
     getLists({ commit }) {
       Address.list().then(res => {
@@ -47,7 +48,7 @@ const store = new Vuex.Store({
     },
     addAction({ commit }, instance) {
       Address.add(instance).then(res => {
-        commit('add', instance)
+        commit('add', res.data.data)
       })
     },
     removeAction({ commit }, id) {

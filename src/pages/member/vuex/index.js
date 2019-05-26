@@ -14,7 +14,7 @@ const store = new Vuex.Store({
     init(state, lists) {
       state.lists = lists
     },
-    add(state, instance) {
+    add(state, instance) { //instance列表里的实例
       state.lists.push(instance)
     },
     remove(state, id) {
@@ -48,7 +48,9 @@ const store = new Vuex.Store({
     },
     addAction({ commit }, instance) {
       Address.add(instance).then(res => {
-        commit('add', res.data.data)
+        //模拟添加id其实instance最好后台返回
+        instance.id = parseInt(Math.random()*100000)
+        commit('add', instance)
       })
     },
     removeAction({ commit }, id) {
@@ -61,10 +63,10 @@ const store = new Vuex.Store({
         // 实际开发使用
         // commit('update', res.data.data)
         // 测试使用
-        let data = res.data.data
-        data.id = instance.id
-        data.isDefault = instance.isDefault
-        commit('update', data)
+        // let data = res.data.data
+        // data.id = instance.id
+        // data.isDefault = instance.isDefault
+        commit('update', instance)
       })
     },
     setDefaultAction({ commit }, id) {

@@ -8,7 +8,7 @@
       v-if="lists&&lists.length"
     >
       <a
-        class="block-item js-address-item address-item address-field"
+        class="block-item js-address-item address-item"
         v-for="list in lists"
         :key="list.id"
         @click="toEdit(list)"
@@ -23,7 +23,7 @@
     <div class="block stick-bottom-row center">
       <router-link
         class="btn btn-blue js-no-webview-block js-add-address-btn"
-        :to="{name:'form', query:{type:'add'} }"
+        :to="{path:'/address/form',query:{type:'add'}}"
       >
         <!--to="/address/form" -->
         <!-- 注意路由路径 -->
@@ -34,18 +34,7 @@
 </template>
 
 <script>
-//import Address from "js/addressService.js"
 export default {
-  // data() {
-  //   return {
-  //     lists: null
-  //   };
-  // },
-  // created() {
-  //   Address.list().then(res => {
-  //     this.lists = res.data.lists;
-  //   });
-  // },
   computed: {
     lists() {
       return this.$store.state.lists;
@@ -53,14 +42,14 @@ export default {
   },
   created(){
      if(!this.lists){
+       //调用Action
       this.$store.dispatch('getLists')
     }
   },
   methods: {
     toEdit(list) {
-      // this.$router.push({ path: "/address/form" })
       this.$router.push({
-        name: "form",
+        path:'/address/form',
         query: {
           type: "edit",
           instance: list //地址实例

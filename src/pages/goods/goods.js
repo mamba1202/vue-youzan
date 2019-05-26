@@ -29,6 +29,7 @@ new Vue({
         skuNum: 1,
         isAddCart: false,
         showAddMessage: false,
+        bannerLists:[],
     },
     created() {
         this.getDetails()
@@ -38,7 +39,6 @@ new Vue({
             axios.post(url.details, { id }).then(res => {
                 //先修改数据结构再赋值
                 this.details = res.data.data
-                this.bannerLists = []
                 this.details.imgs.forEach(item => {
                     this.bannerLists.push({
                         clickUrl: '',

@@ -1,8 +1,9 @@
 <template>
   <div class="bottom-nav">
     <ul>
-      <li :class="{active: index===curIndex}"
+      <li 
        v-for="(list,index) in navConfig"
+       :class="{active: index===curIndex}"
         @click="changeNav(list,index)">
         <a><i :class="list.icon" ></i><div>{{list.name}}</div></a></li>
     </ul>
@@ -33,7 +34,7 @@ export default {   //导出一个实例对象
   data() {
     return {
       navConfig,
-      curIndex: parseInt(qs.parse(location.search.substr(1)).index)      //有index就active 没有就归0
+      curIndex: parseInt(qs.parse(location.search.substr(1)).index) || 0    //有index就active 没有就归0
     }
   },
   methods: {

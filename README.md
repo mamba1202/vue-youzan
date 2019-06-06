@@ -14,3 +14,16 @@
 - 使用 axios + promise 异步请求
 - 使用easy-mock 接口管理平台，使用 mock.js 进行数据模拟
 - 使用 swiper + mint-ui + velocity-animate 插件
+## 图示
+- 首页
+![avatar](./src/modules/img/首页.jpg)
+- 分类页
+![avatar](./src/modules/img/分类页.png)
+- 商品页
+![avatar](./src/modules/img/商品页-01.png)
+![avatar](./src/modules/img/商品页-02.png)
+- 购物车
+![avatar](./src/modules/img/购物车页面.png)
+- 地址栏
+![avatar](./src/modules/img/地址栏-01.png)
+![avatar](./src/modules/img/地址栏-02.png)

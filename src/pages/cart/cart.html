@@ -23,7 +23,7 @@
   </style>
 </head>
 
-<body class=" body-fixed-bottom" style="">
+<body class=" body-fixed-bottom">
   <div class="container " style="min-height: 581px;" v-cloak>
     <div class="content clearfix js-page-content">
       <div id="cart-container">
@@ -88,7 +88,7 @@
                           <!-- 显示状态 -->
                           <div class="num" v-show="!shop.editing">
                             <!-- （- 1 + ）正常情况子下 显示编辑字体-->
-                            <span class="num-txt">{{good.number}}</span>
+                            <span class="num-txt">×{{good.number}}</span>
                             <!---->
                           </div>
                           <!-- 编辑状态 -->
@@ -173,9 +173,9 @@
                 合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);">{{total | currency}}</span>
                 <p class="c-gray-dark">不含运费</p>
               </div>
-              <button  @click="alert" href="javascript:;" :disabled="!selectLists.length" v-show="!editingShop"
+              <button  @click="alert" href="javascript:;" :disabled="!selectLists" v-show="!editingShop"
                 class="js-go-pay btn btn-orange-dark font-size-14">
-                结算 (3)
+                结算
               </button>
               <!-- 编辑状态 -->
               <button href="javascript:;"
@@ -194,7 +194,7 @@
     <!-- 阴影层 -->
     <div id="0SuefKPV4p" v-show="removePopup" style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;  opacity: 1;"></div>
     <!-- 弹框 -->
-    <div id="d2tfiX27YS" v-show="removePopup" class="popout-confirm popout-box" style="overflow: hidden; position: absolute; z-index: 1000; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0px); visibility: visible; border-radius: 4px; background: white; width: 270px; padding: 15px; opacity: 1;">
+    <div id="d2tfiX27YS" v-show="removePopup" class="popout-confirm popout-box" style="overflow: hidden; position: fixed; z-index: 1000; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0px); visibility: visible; border-radius: 4px; background: white; width: 270px; padding: 15px; opacity: 1;">
       <div class="confirm-content font-size-14" style="line-height: 20px; padding: 5px 5px 10px;">
         {{removeMsg}}
       </div>

@@ -35,7 +35,7 @@ const store = new Vuex.Store({
     setDefault(state, id) {
       let lists = state.lists
       lists.forEach(item => {
-        item.isDefault = item.id == id ? true : false
+        item.isDefault = item.id ==  parseInt(id) ? true : false
       })
     }
   },
@@ -63,9 +63,9 @@ const store = new Vuex.Store({
         // 实际开发使用
         // commit('update', res.data.data)
         // 测试使用
-        // let data = res.data.data
-        // data.id = instance.id
-        // data.isDefault = instance.isDefault
+         let data = res.data.data
+         data.id = instance.id
+         data.isDefault = instance.isDefault
         commit('update', instance)
       })
     },

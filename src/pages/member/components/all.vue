@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import Address from 'js/addressService.js'
 export default {
   computed: {
     lists() {

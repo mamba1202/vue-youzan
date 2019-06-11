@@ -6,12 +6,15 @@ export default {
     return {
       name: '',
       tel: '',
+      province: '',
       provinceValue: -1,
+      city: '',
       cityValue: -1,
+      county: '',
       districtValue: -1,
       address: '',
       id: '',
-      isDefault: false,
+      isDefault: true,
       type: this.$route.query.type,
       addressData: require('js/address.json'),
       cityList: null,
@@ -47,8 +50,8 @@ export default {
   methods: {
     save() {
       // 需要做非空和合法性校验
-      let { name, tel, provinceValue, cityValue, districtValue, address} = this
-      let data = { name, tel, provinceValue, cityValue, districtValue, address}
+      let { name, tel, province, provinceValue, city, cityValue, county, districtValue, address} = this
+      let data = { name, tel,  province, provinceValue, city, cityValue, county, districtValue, address}
       if (!name.trim()) {
           alert("请填写姓名");
           return;
@@ -85,9 +88,7 @@ export default {
       }
     },
     setDefault() {
-      Address.setDefault(this.id).then(res => {
         this.$store.dispatch('setDefaultAction', this.id)
-      })
     }
   },
   watch: {

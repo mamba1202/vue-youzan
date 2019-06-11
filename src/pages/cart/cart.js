@@ -71,6 +71,8 @@ new Vue({
                 })
                 this.total = total
                 return arr
+            }else{
+                this.total = 0
             }
         },
         removeLists() {  //编辑情况下商品选中--要删除的商品列表
@@ -122,7 +124,7 @@ new Vue({
         },
         selectAll() {   //全选
             let attr = this.editingShop ? 'allRemoveSelected' : 'allSelected'
-            console.log(this.allSelected)
+            //console.log(this.allSelected)
             this[attr] = !this[attr]
         },
         edit(shop, shopIndex) {
@@ -231,7 +233,7 @@ new Vue({
         end(e,shopIndex,good,goodIndex){
             let endX = e.changedTouches[0].clientX 
             let left = '0'
-           console.log(endX, good.startX)
+           //console.log(endX, good.startX)
            if(good.startX - endX > 100){
               left = '-60px'
            }
